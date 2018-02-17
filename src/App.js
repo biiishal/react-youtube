@@ -1,3 +1,4 @@
+import _, from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
 import YTSearch from 'youtube-search';
@@ -15,8 +16,12 @@ class App extends Component {
       videos: [],
       selectedVideo: null
     }
+    
+    this.videoSearch('liverpool');
+  }
 
-    YTSearch('sadhguru', {maxResults: 7, key: API_KEY, type: 'video'}, (err, results) => {
+  videoSearch(term) {
+    YTSearch(term, {maxResults: 7, key: API_KEY, type: 'video'}, (err, results) => {
       if(err) return console.log(err);
 
       console.dir(results);
@@ -28,11 +33,12 @@ class App extends Component {
   }
 
   render() {
+    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 1000);
     return (
       <div className="App container">
         <div className="row">
           <div className="col-md-6">
-            <SearchBar />
+            <SearchBar onSearchTermChange={videoSearch} />
           </div>
 
           <div className="row">
