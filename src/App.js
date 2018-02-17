@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import YTSearch from 'youtube-search';
-import SearchBar from './search_bar';
-import VideoList from './video_list';
-import VideoDetail from './video_detail';
+import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const API_KEY = "AIzaSyA7y_9cyGwq9kDQpC3PmnQajThCxGgJp9M"
 
